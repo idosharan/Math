@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>אימון למבחן מתמטיקה — כיתה ג'</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="title">
+      <span class="logo">🧮</span>
+      <div>
+        <h1>מתמטיקה כיפית לילדים</h1>
+        <p class="subtitle">תרגול קצר, צבעוני ומותאם לכיתה ג'</p>
+      </div>
+    </div>
+    <div class="badges" id="badges"></div>
+  </header>
+
+  <main class="container">
+    <section class="card settings">
+      <h2>בחירת נושא והגדרות</h2>
+      <div class="grid">
+        <label class="field">
+          <span>בחר נושא</span>
+          <select id="topic">
+            <option value="multiplication">לוח הכפל (עד 10×10)</option>
+            <option value="tenThousands">תחום הרבבה (עד 9,999)</option>
+            <option value="addSub">חיבור וחיסור</option>
+            <option value="division">חילוק</option>
+            <option value="wordProblems">בעיות מילוליות</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>רמת קושי (בינוני/מתקדם)</span>
+          <select id="difficulty">
+            <option value="medium">בינוני</option>
+            <option value="hard" selected>מתקדם</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>מספר שאלות</span>
+          <select id="questionCount">
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="startBtn" class="btn primary">🚀 הפעל מבחן</button>
+        <button id="howBtn" class="btn ghost" title="איך זה עובד?">?</button>
+      </div>
+    </section>
+
+    <section class="card quiz hidden" id="quiz">
+      <div class="quiz-header">
+        <div class="progress">
+          <div class="progress-bar" id="progressBar" style="width:0%"></div>
+        </div>
+        <div class="score" id="scoreBox">ניקוד: 0</div>
+      </div>
+
+      <div class="question" id="questionText">כאן תופיע השאלה</div>
+
+      <div id="answerArea" class="answer-area">
+        <!-- Inputs will be injected dynamically depending on question type -->
+      </div>
+
+      <div class="keypad" id="keypad"></div>
+
+      <div class="actions">
+        <button id="checkBtn" class="btn success">בדיקה</button>
+        <button id="skipBtn" class="btn ghost">דלג</button>
+        <button id="endBtn" class="btn danger">סיים</button>
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+    </section>
+
+    <section class="card hidden" id="summary">
+      <h2>סיכום</h2>
+      <p id="summaryText"></p>
+      <div class="actions">
+        <button id="againBtn" class="btn primary">🔁 שוב</button>
+        <button id="backBtn" class="btn ghost">⬅️ חזרה להגדרות</button>
+      </div>
+    </section>
+
+    <dialog id="howDialog">
+      <h3>איך זה עובד?</h3>
+      <ol>
+        <li>בחרו נושא, רמת קושי ומספר שאלות.</li>
+        <li>לחצו <strong>התחל</strong>. תופיע שאלה בכל פעם.</li>
+        <li>מקלידים תשובה בשדה. אפשר להשתמש במקשי המספרים על המסך.</li>
+        <li>לחצו <strong>בדיקה</strong> לקבלת משוב מיידי ⭐.</li>
+        <li>בסוף תקבלו ציון, מדליות והמלצות לשיפור.</li>
+      </ol>
+      <form method="dialog">
+        <button class="btn">הבנתי</button>
+      </form>
+    </dialog>
+  </main>
+
+  <footer class="app-footer">
+    <small>נבנה לילדים בכיתה ג' — עובד גם בלי אינטרנט (קבצים מקומיים).</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
