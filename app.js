@@ -237,7 +237,7 @@ function renderInputs(q){
       span.textContent = q.unit;
       answerArea.appendChild(span);
     }
-    setTimeout(()=>input.focus(), 50);
+    if (!isMobile) setTimeout(()=>input.focus(), 50);
   }
   else if (q.type === 'text') {
     const input = document.createElement('input');
@@ -248,7 +248,7 @@ function renderInputs(q){
     input.id = 'answerText';
     input.dir = 'ltr';
     answerArea.appendChild(input);
-    setTimeout(()=>input.focus(), 50);
+    if (!isMobile) setTimeout(()=>input.focus(), 50);
   }
   else if (q.type === 'compare') {
     const input = document.createElement('input');
@@ -261,14 +261,14 @@ function renderInputs(q){
     input.className = 'compare-input';
     input.style.textAlign = 'left';
     answerArea.appendChild(input);
-    setTimeout(()=>input.focus(), 50);
+    if (!isMobile) setTimeout(()=>input.focus(), 50);
   }
   else if (q.type === 'quotientRemainder') {
     const qIn = document.createElement('input'); qIn.type='tel'; qIn.inputMode = isMobile ? 'none' : 'numeric'; if (isMobile) qIn.readOnly = true; qIn.placeholder='מנה'; qIn.id='ansQ';
     const rIn = document.createElement('input'); rIn.type='tel'; rIn.inputMode = isMobile ? 'none' : 'numeric'; if (isMobile) rIn.readOnly = true; rIn.placeholder='שארית'; rIn.id='ansR';
     qIn.dir = 'ltr'; rIn.dir = 'ltr';
     answerArea.appendChild(qIn); answerArea.appendChild(rIn);
-    setTimeout(()=>qIn.focus(), 50);
+    if (!isMobile) setTimeout(()=>qIn.focus(), 50);
   }
 
   // בנה מקלדת מספרים
@@ -282,7 +282,7 @@ function renderInputs(q){
       if (k === '⌫') { active.value = active.value.slice(0,-1); return; }
       if (k === '✔') { onCheck(); return; }
       active.value += k;
-      active.focus();
+      if (!isMobile) active.focus();
     });
     keypad.appendChild(b);
   });
