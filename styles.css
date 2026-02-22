@@ -31,6 +31,8 @@ body {
   background: linear-gradient(120deg, rgba(45,127,249,0.14), rgba(35,198,215,0.14));
   border-bottom: 1px solid #e5e9f2;
   padding: 12px 16px;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 .title { display: flex; align-items: center; gap: 12px; }
 .title .logo { font-size: 40px; }

@@ -328,6 +328,9 @@ function start(){
   feedback.className = 'feedback';
   feedback.textContent = '';
   updateUI();
+  setTimeout(()=>{
+    quizSec.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+  }, 50);
 }
 
 startBtn.addEventListener('click', start);
