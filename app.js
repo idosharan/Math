@@ -17,7 +17,6 @@ const questionText = el('questionText');
 const answerArea = el('answerArea');
 const keypad = el('keypad');
 const checkBtn = el('checkBtn');
-const skipBtn = el('skipBtn');
 const endBtn = el('endBtn');
 const feedback = el('feedback');
 
@@ -28,6 +27,7 @@ const backBtn = el('backBtn');
 
 const howDialog = el('howDialog');
 const badgesBox = el('badges');
+const settingsCard = el('settingsCard');
 
 let problems = [];
 let questions = [];
@@ -59,6 +59,7 @@ function saveBest(topicKey, diff, percent) {
 
 function showBadges() {
   badgesBox.innerHTML = '';
+  badgesBox.style.display = 'none';
   const topics = [
     ['multiplication', 'כפל'],
     ['tenThousands', 'תחום הרבבה'],
@@ -318,6 +319,9 @@ function finish(){
   if (percent >= 90) medal = '🥇';
   else if (percent >= 75) medal = '🥈';
   summaryText.textContent = `סיימנו! ציון: ${percent}% ${medal} · ענית נכון על ${score/10} מתוך ${questions.length}.`;
+  setTimeout(()=>{
+    settingsCard?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+  }, 150);
 }
 
 function start(){
@@ -335,7 +339,6 @@ function start(){
 
 startBtn.addEventListener('click', start);
 checkBtn.addEventListener('click', onCheck);
-skipBtn.addEventListener('click', onSkip);
 endBtn.addEventListener('click', finish);
 
 againBtn.addEventListener('click', start);
