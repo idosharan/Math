@@ -28,6 +28,7 @@ const backBtn = el('backBtn');
 const howDialog = el('howDialog');
 const badgesBox = el('badges');
 const settingsCard = el('settingsCard');
+const appHeader = document.querySelector('.app-header');
 
 const isMobile = /Android|iPhone|iPad|iPod|Windows Phone|Mobile/i.test(navigator.userAgent || '');
 
@@ -392,4 +393,13 @@ howBtn.addEventListener('click', ()=>{
 window.addEventListener('load', async ()=>{
   await loadProblems();
   showBadges();
+  if (isMobile && appHeader) {
+    let lastY = 0;
+    window.addEventListener('scroll', ()=>{
+      const y = window.scrollY || 0;
+      if (y > 60 && y > lastY) appHeader.classList.add('header-hidden');
+      else appHeader.classList.remove('header-hidden');
+      lastY = y;
+    }, { passive: true });
+  }
 });
