@@ -154,3 +154,7 @@ body {
   .answer-area input { width: 100%; }
   .actions { justify-content: center; }
 }
+
+@media (max-width: 680px) {
+  .settings .grid { grid-template-columns: 1fr; gap: 12px; }
+}
