@@ -36,8 +36,8 @@ let score = 0;
 let current = null;
 
 function isNumericQuestion(text) {
-  // מזהה תרגילים שהם רק ספרות וסימני חשבון כדי ליישר שמאלה
-  const cleaned = text.replace(/[0-9\s\+\-×÷=\?\(\)<>:_,\.]/g, '');
+  // מזהה תרגילים שהם רק ספרות וסימני חשבון כדי ליישר שמאלה (כולל סימן מינוס יוניקוד)
+  const cleaned = text.replace(/[0-9\s\+\-−×÷=\?\(\)<>:_,\.]/g, '');
   return cleaned.trim().length === 0;
 }
 
@@ -130,12 +130,12 @@ function genTenThousands(diff) {
     const places = [ ['אלפים', 1000], ['מאות', 100], ['עשרות', 10], ['יחידות', 1] ];
     const [label, val] = choice(places);
     const digit = Math.floor(n / val) % 10;
-    const text = `מה הערך של ספרת ה${label} במספר ${n}?`;
-    return { type: 'number', topic: 'tenThousands', text, correct: String(digit * val) };
+    const text = `מה ספרת ה${label} במספר ${n}?`;
+    return { type: 'number', topic: 'tenThousands', text, correct: String(digit) };
   }
   if (kind === 'round') {
     const to = choice([10, 100, 1000]);
-    const text = `עגול את ${n} ל${to === 10 ? 'עשרות' : to === 100 ? 'מאות' : 'אלפים'} הקרובות`;
+    const text = `תעגל/י את ${n} ל${to === 10 ? 'עשרות' : to === 100 ? 'מאות' : 'אלפים'} הקרובות`;
     const x = Math.round(n / to) * to;
     return { type: 'number', topic: 'tenThousands', text, correct: String(x) };
   }
@@ -167,12 +167,24 @@ function genTenThousands(diff) {
   const a = rnd(0, 9999), b = rnd(0, 9999);
   const sign = a === b ? '=' : (a > b ? '>' : '<');
   const text = `איזה סימן נכון: ${a} __ ${b}  (כתבו אחד מהבאים: < , > , =) `;
-  return { type: 'text', topic: 'tenThousands', text, correct: sign, normalize: s=>s.trim() };
+  return { type: 'compare', topic: 'tenThousands', text, a, b, correct: sign };
 }
 
 function normalizeExpanded(s){
   // מסדר פלט כמו "4000 + 300 + 20 + 5" ללא רווחים מיותרים
   return s.replace(/\s+/g,'').replace(/\+/g,' + ').replace(/\s+\+/g,' + ').trim();
+}
+
+function normalizeCompareSign(s){
+  const cleaned = s.replace(/[\u200e\u200f\u202a-\u202e\u2066-\u2069]/g,'').trim();
+  if (/[>›»]/.test(cleaned)) return '>';
+  if (/[<‹«]/.test(cleaned)) return '<';
+  if (/[=＝]/.test(cleaned)) return '=';
+  const pick = (cleaned.match(/[><=]/g) || [cleaned[0] || ''])[0];
+  if (pick === '>') return '>';
+  if (pick === '<') return '<';
+  if (pick === '=') return '=';
+  return cleaned;
 }
 
 function pickWordProblem(diff) {
@@ -213,6 +225,7 @@ function renderInputs(q){
     input.inputMode = 'numeric';
     input.placeholder = 'הקלד/י תשובה';
     input.id = 'answer';
+    input.dir = 'ltr';
     answerArea.appendChild(input);
     if (q.unit) {
       const span = document.createElement('span');
@@ -227,19 +240,32 @@ function renderInputs(q){
     input.type = 'text';
     input.placeholder = 'כתבו כאן';
     input.id = 'answerText';
+    input.dir = 'ltr';
+    answerArea.appendChild(input);
+    setTimeout(()=>input.focus(), 50);
+  }
+  else if (q.type === 'compare') {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = '<  >  =';
+    input.id = 'answerCompare';
+    input.dir = 'ltr';
+    input.className = 'compare-input';
+    input.style.textAlign = 'left';
     answerArea.appendChild(input);
     setTimeout(()=>input.focus(), 50);
   }
   else if (q.type === 'quotientRemainder') {
     const qIn = document.createElement('input'); qIn.type='tel'; qIn.inputMode='numeric'; qIn.placeholder='מנה'; qIn.id='ansQ';
     const rIn = document.createElement('input'); rIn.type='tel'; rIn.inputMode='numeric'; rIn.placeholder='שארית'; rIn.id='ansR';
+    qIn.dir = 'ltr'; rIn.dir = 'ltr';
     answerArea.appendChild(qIn); answerArea.appendChild(rIn);
     setTimeout(()=>qIn.focus(), 50);
   }
 
   // בנה מקלדת מספרים
   keypad.innerHTML = '';
-  const keys = ['7','8','9','4','5','6','1','2','3','⌫','0','✔','<','>','='];
+  const keys = ['7','8','9','4','5','6','1','2','3','⌫','0','+','<','>','='];
   keys.forEach(k=>{
     const b = document.createElement('button');
     b.type = 'button'; b.textContent = k; b.addEventListener('click', ()=>{
@@ -271,6 +297,11 @@ function checkAnswer(){
   if (current.type === 'number') {
     const val = (el('answer')?.value || '').trim();
     return val === current.correct;
+  }
+  if (current.type === 'compare') {
+    const val = normalizeCompareSign(el('answerCompare')?.value || '');
+    const opposite = current.correct === '>' ? '<' : current.correct === '<' ? '>' : '=';
+    return val === current.correct || val === opposite;
   }
   if (current.type === 'text') {
     const normalize = current.normalize || ((s)=>s.trim());
