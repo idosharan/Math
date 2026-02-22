@@ -29,6 +29,8 @@ const howDialog = el('howDialog');
 const badgesBox = el('badges');
 const settingsCard = el('settingsCard');
 
+const isMobile = /Android|iPhone|iPad|iPod|Windows Phone|Mobile/i.test(navigator.userAgent || '');
+
 let problems = [];
 let questions = [];
 let index = 0;
@@ -222,7 +224,8 @@ function renderInputs(q){
   if (q.type === 'number') {
     const input = document.createElement('input');
     input.type = 'tel';
-    input.inputMode = 'numeric';
+    input.inputMode = isMobile ? 'none' : 'numeric';
+    if (isMobile) input.readOnly = true;
     input.placeholder = 'הקלד/י תשובה';
     input.id = 'answer';
     input.dir = 'ltr';
@@ -238,6 +241,8 @@ function renderInputs(q){
   else if (q.type === 'text') {
     const input = document.createElement('input');
     input.type = 'text';
+    input.inputMode = isMobile ? 'none' : 'text';
+    if (isMobile) input.readOnly = true;
     input.placeholder = 'כתבו כאן';
     input.id = 'answerText';
     input.dir = 'ltr';
@@ -247,6 +252,8 @@ function renderInputs(q){
   else if (q.type === 'compare') {
     const input = document.createElement('input');
     input.type = 'text';
+    input.inputMode = isMobile ? 'none' : 'text';
+    if (isMobile) input.readOnly = true;
     input.placeholder = '<  >  =';
     input.id = 'answerCompare';
     input.dir = 'ltr';
@@ -256,8 +263,8 @@ function renderInputs(q){
     setTimeout(()=>input.focus(), 50);
   }
   else if (q.type === 'quotientRemainder') {
-    const qIn = document.createElement('input'); qIn.type='tel'; qIn.inputMode='numeric'; qIn.placeholder='מנה'; qIn.id='ansQ';
-    const rIn = document.createElement('input'); rIn.type='tel'; rIn.inputMode='numeric'; rIn.placeholder='שארית'; rIn.id='ansR';
+    const qIn = document.createElement('input'); qIn.type='tel'; qIn.inputMode = isMobile ? 'none' : 'numeric'; if (isMobile) qIn.readOnly = true; qIn.placeholder='מנה'; qIn.id='ansQ';
+    const rIn = document.createElement('input'); rIn.type='tel'; rIn.inputMode = isMobile ? 'none' : 'numeric'; if (isMobile) rIn.readOnly = true; rIn.placeholder='שארית'; rIn.id='ansR';
     qIn.dir = 'ltr'; rIn.dir = 'ltr';
     answerArea.appendChild(qIn); answerArea.appendChild(rIn);
     setTimeout(()=>qIn.focus(), 50);
