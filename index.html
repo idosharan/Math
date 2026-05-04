@@ -337,7 +337,7 @@ input[type=number]{-moz-appearance:textfield}
   <button class="back-btn" onclick="showScreen('welcome')">⬅ חזור לתפריט</button>
   <div class="mission-header">
     <h2 id="missionTitle">בחר משימה</h2>
-    <p id="missionSub">כל משימה כוללת 15 שאלות למעבר שלב</p>
+    <p id="missionSub">כל משימה כוללת 10 שאלות למעבר שלב</p>
   </div>
   <div class="missions-grid" id="missionsGrid"></div>
 </div>
@@ -348,7 +348,7 @@ input[type=number]{-moz-appearance:textfield}
     <div class="hud-item xp">⚡ ניקוד: <span id="xpDisplay">0</span></div>
     <div class="hud-item combo">🔥 רצף: <span id="comboDisplay">0</span></div>
     <div class="hud-item hp" id="hpDisplay">❤️❤️❤️</div>
-    <div class="hud-item q-num">📋 <span id="qNumDisplay">1/15</span></div>
+    <div class="hud-item q-num">📋 <span id="qNumDisplay">1/10</span></div>
   </div>
   <div class="progress-wrap">
     <div class="progress-bar" id="progressBar" style="width:0%"></div>
@@ -540,7 +540,7 @@ function generateLevel1(sub){
       qs.push(mcQ(product+' ÷ '+b+' = ?', a, 'חשבו: כמה פעמים '+b+' נכנס ב-'+product+'?', 0, 100));
     }
   }
-  return shuffle(qs).slice(0,15);
+  return shuffle(qs).slice(0,10);
 }
 
 function generateLevel2(sub){
@@ -614,7 +614,7 @@ function generateLevel2(sub){
       qs.push(typeQ(a+' × '+b+' = ?', a*b, 'כפלו את הספרות ואז הוסיפו אפסים'));
     }
   }
-  return shuffle(qs).slice(0,15);
+  return shuffle(qs).slice(0,10);
 }
 
 function generateLevel3(sub){
@@ -670,7 +670,7 @@ function generateLevel3(sub){
       qs.push(typeQ(p.q, p.a, 'קראו שוב בעיון, חפשו את הפעולה המתאימה'));
     });
   }
-  return shuffle(qs).slice(0,15);
+  return shuffle(qs).slice(0,10);
 }
 
 const LEVEL_META = {
@@ -751,13 +751,13 @@ function startMission(missionId){
   else if(state.level===2) state.questions = generateLevel2(missionId);
   else state.questions = generateLevel3(missionId);
 
-  // Ensure always 15 questions
-  while(state.questions.length<15){
+  // Ensure always 10 questions
+  while(state.questions.length<10){
     if(state.level===1) state.questions.push(...generateLevel1(missionId));
     else if(state.level===2) state.questions.push(...generateLevel2(missionId));
     else state.questions.push(...generateLevel3(missionId));
   }
-  state.questions = state.questions.slice(0,15);
+  state.questions = state.questions.slice(0,10);
 
   showScreen('battle');
   renderQuestion();
