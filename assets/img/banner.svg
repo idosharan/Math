@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#121530"/>
+      <stop offset="1" stop-color="#1f2b52"/>
+    </linearGradient>
+    <g id="sym-plus"><path d="M-8-24h16v16h16v16H8v16H-8V8h-16V-8h16z"/></g>
+    <g id="sym-times"><path d="M-17-22l17 17 17-17 5 5L5 0l17 17-5 5L0 5l-17 17-5-5L-5 0l-17-17z"/></g>
+    <g id="sym-div"><rect x="-7" y="-22" width="14" height="14"/><rect x="-7" y="8" width="14" height="14"/></g>
+    <g id="sym-eq"><rect x="-22" y="-14" width="44" height="10"/><rect x="-22" y="4" width="44" height="10"/></g>
+    <g id="sym-lt"><path d="M18-22v12L-2 0l20 10v12L-22 0z"/></g>
+    <g id="sym-minus"><rect x="-22" y="-6" width="44" height="12"/></g>
+  </defs>
+  <style>
+    .f{animation:fl 6s ease-in-out infinite}
+    .f2{animation-delay:-2s}.f3{animation-delay:-4s}
+    @keyframes fl{50%{transform:translateY(-10px)}}
+    @media (prefers-reduced-motion:reduce){.f{animation:none}}
+  </style>
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <g fill="#fff">
+    <rect x="80" y="40" width="4" height="4" opacity=".5"/><rect x="260" y="90" width="3" height="3" opacity=".4"/>
+    <rect x="420" y="30" width="4" height="4" opacity=".5"/><rect x="610" y="70" width="3" height="3" opacity=".4"/>
+    <rect x="760" y="26" width="4" height="4" opacity=".5"/><rect x="930" y="84" width="3" height="3" opacity=".4"/>
+    <rect x="1100" y="44" width="4" height="4" opacity=".5"/><rect x="1010" y="140" width="3" height="3" opacity=".4"/>
+    <rect x="180" y="150" width="3" height="3" opacity=".4"/><rect x="540" y="130" width="3" height="3" opacity=".4"/>
+  </g>
+  <!-- pixel hills -->
+  <path fill="#1d2850" d="M0 220h60v-30h80v-20h100v30h60v-40h120v30h80v-20h100v40h80v-30h120v20h100v-40h120v30h80v-20h100v350H0z"/>
+  <path fill="#26346a" d="M0 250h100v-20h140v20h120v-30h100v30h140v-20h120v20h100v-30h140v30h120v-10h120v80H0z"/>
+  <path fill="#2f4182" d="M0 280h1200v20H0z"/>
+  <!-- floating math symbols -->
+  <g class="f"><use href="#sym-plus" x="140" y="110" fill="#ffd23f"/></g>
+  <g class="f f2"><use href="#sym-times" x="330" y="70" fill="#3ee08f"/></g>
+  <g class="f f3"><use href="#sym-div" x="500" y="150" fill="#53d6ff"/></g>
+  <g class="f"><use href="#sym-eq" x="690" y="96" fill="#ff7ab6"/></g>
+  <g class="f f2"><use href="#sym-lt" x="870" y="150" fill="#ff9f43"/></g>
+  <g class="f f3"><use href="#sym-minus" x="1050" y="96" fill="#ff5d6c"/></g>
+  <g opacity=".35">
+    <use href="#sym-times" x="40" y="200" fill="#53d6ff" transform="scale(1)"/>
+    <use href="#sym-plus" x="1150" y="200" fill="#3ee08f"/>
+    <use href="#sym-eq" x="600" y="230" fill="#ffd23f"/>
+  </g>
+</svg>

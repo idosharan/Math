@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <pattern id="tiles" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#f3c47e"/>
+      <rect width="12" height="12" fill="#ecb96c"/>
+      <rect x="12" y="12" width="12" height="12" fill="#ecb96c"/>
+    </pattern>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".7">
+      <stop offset=".6" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3b1d00" stop-opacity=".45"/>
+    </radialGradient>
+    <g id="bush">
+      <circle cx="0" cy="0" r="13" fill="#2f9e44"/><circle cx="14" cy="2" r="12" fill="#2f9e44"/><circle cx="7" cy="-9" r="11" fill="#38b24f"/>
+      <circle cx="3" cy="-4" r="4" fill="#5fd06f"/>
+    </g>
+    <g id="box">
+      <rect width="26" height="26" rx="3" fill="#b8763c"/>
+      <rect x="3" y="3" width="20" height="20" fill="#d08f4f"/>
+      <path d="M4 4l18 18M22 4 4 22" stroke="#8c5428" stroke-width="3"/>
+    </g>
+    <g id="gem">
+      <path d="M0-10 8-3 5 8H-5L-8-3z" fill="#a855f7"/>
+      <path d="M0-10 8-3H-8z" fill="#d8b4fe"/>
+      <path d="M-2-6h3" stroke="#fff" stroke-width="1.5"/>
+    </g>
+  </defs>
+  <style>
+    .spin{animation:hover 2.2s ease-in-out infinite}
+    @keyframes hover{50%{transform:translateY(-4px)}}
+    @media (prefers-reduced-motion:reduce){.spin{animation:none}}
+  </style>
+  <rect width="320" height="180" fill="url(#tiles)"/>
+  <!-- walls -->
+  <use href="#box" x="10" y="10"/><use href="#box" x="36" y="10"/><use href="#box" x="10" y="36"/>
+  <use href="#box" x="284" y="144"/><use href="#box" x="258" y="144"/><use href="#box" x="284" y="118"/>
+  <use href="#box" x="120" y="20"/><use href="#box" x="174" y="134"/>
+  <use href="#bush" x="250" y="34"/><use href="#bush" x="276" y="44"/>
+  <use href="#bush" x="40" y="140"/><use href="#bush" x="66" y="150"/>
+  <!-- gem mine -->
+  <circle cx="160" cy="92" r="30" fill="#5b3a1e"/>
+  <circle cx="160" cy="92" r="24" fill="#3b2412"/>
+  <g class="spin">
+    <use href="#gem" x="150" y="92"/><use href="#gem" x="170" y="94"/><use href="#gem" x="160" y="80"/>
+    <circle cx="160" cy="48" r="17" fill="#fff"/>
+    <path d="M152 40l16 16M168 40l-16 16" stroke="#7c3aed" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- blue team -->
+  <g transform="translate(78 82)">
+    <ellipse cx="0" cy="14" rx="14" ry="5" fill="#000" opacity=".2"/>
+    <circle r="15" fill="#3b82f6"/><circle r="15" fill="#60a5fa" opacity=".5" cy="-3"/>
+    <circle cx="-5" cy="-3" r="3.4" fill="#fff"/><circle cx="6" cy="-3" r="3.4" fill="#fff"/>
+    <circle cx="-4" cy="-3" r="1.6" fill="#111"/><circle cx="7" cy="-3" r="1.6" fill="#111"/>
+    <path d="M-5 5q6 5 11 0" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="0" cy="-26" r="5" fill="#3ee08f"/>
+  </g>
+  <!-- red team -->
+  <g transform="translate(244 98)">
+    <ellipse cx="0" cy="14" rx="14" ry="5" fill="#000" opacity=".2"/>
+    <circle r="15" fill="#ef4444"/><circle r="15" fill="#f87171" opacity=".5" cy="-3"/>
+    <circle cx="-6" cy="-3" r="3.4" fill="#fff"/><circle cx="5" cy="-3" r="3.4" fill="#fff"/>
+    <circle cx="-7" cy="-3" r="1.6" fill="#111"/><circle cx="4" cy="-3" r="1.6" fill="#111"/>
+    <path d="M-6 6h10" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    <path d="M-12-12 0-24 12-12" fill="#111" opacity=".85"/>
+  </g>
+  <rect width="320" height="180" fill="url(#vig)"/>
+</svg>

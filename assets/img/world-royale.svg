@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f8cff"/>
+      <stop offset="1" stop-color="#a8dcff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a9bd8"/>
+      <stop offset="1" stop-color="#16659e"/>
+    </linearGradient>
+    <linearGradient id="storm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0"/>
+      <stop offset=".35" stop-color="#7c3aed" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#4c1d95" stop-opacity=".85"/>
+    </linearGradient>
+    <g id="crate">
+      <rect x="-14" y="0" width="28" height="24" rx="3" fill="#2b5fd9"/>
+      <rect x="-14" y="0" width="28" height="6" rx="2" fill="#5b8cff"/>
+      <rect x="-14" y="10" width="28" height="3" fill="#1d3f99"/>
+    </g>
+    <g id="chute">
+      <path d="M-30 0a30 22 0 0 1 60 0z" fill="#ff4d5e"/>
+      <path d="M-10 0a10 22 0 0 1 20 0z" fill="#fff"/>
+      <path d="M-28 0 -10 34M28 0 10 34M0 0v34" stroke="#f1f1f1" stroke-width="1.5"/>
+    </g>
+  </defs>
+  <style>
+    .drop{animation:sway 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 0}
+    .drop2{animation-delay:-1.7s}
+    @keyframes sway{50%{transform:rotate(4deg) translateY(3px)}}
+    @media (prefers-reduced-motion:reduce){.drop{animation:none}}
+  </style>
+  <rect width="320" height="180" fill="url(#sky)"/>
+  <rect y="112" width="320" height="68" fill="url(#sea)"/>
+  <path d="M12 130h18M60 150h22M250 160h26M120 170h20M276 128h16" stroke="#fff" stroke-opacity=".45" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- island -->
+  <ellipse cx="140" cy="128" rx="112" ry="22" fill="#f2d48b"/>
+  <ellipse cx="140" cy="122" rx="98" ry="18" fill="#4cc35a"/>
+  <ellipse cx="120" cy="118" rx="54" ry="10" fill="#3aa64a"/>
+  <!-- safe zone -->
+  <ellipse cx="128" cy="122" rx="56" ry="11" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <!-- trees -->
+  <g>
+    <rect x="58" y="94" width="5" height="22" fill="#7a4b26"/><circle cx="60" cy="92" r="12" fill="#2e9e44"/><circle cx="54" cy="96" r="8" fill="#2e9e44"/>
+    <rect x="196" y="98" width="5" height="18" fill="#7a4b26"/><circle cx="198" cy="96" r="10" fill="#2e9e44"/>
+    <rect x="98" y="102" width="4" height="12" fill="#7a4b26"/><circle cx="100" cy="100" r="8" fill="#37b04e"/>
+  </g>
+  <!-- tower -->
+  <rect x="144" y="86" width="20" height="30" fill="#c7a273"/><rect x="140" y="80" width="28" height="8" fill="#a5835a"/>
+  <rect x="150" y="96" width="8" height="10" fill="#5a3d22"/>
+  <!-- storm wall -->
+  <rect x="200" y="0" width="120" height="180" fill="url(#storm)"/>
+  <path d="M286 24l-14 26h12l-10 26 24-34h-12l10-18z" fill="#ffe14d"/>
+  <!-- supply drops: + and - -->
+  <g transform="translate(86 14)"><g class="drop">
+    <use href="#chute"/>
+    <use href="#crate" y="34"/>
+    <path d="M0 40v12M-6 46h12" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>
+  </g></g>
+  <g transform="translate(186 8)"><g class="drop drop2">
+    <use href="#chute"/>
+    <use href="#crate" y="34"/>
+    <path d="M-6 46h12" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>
+  </g></g>
+</svg>

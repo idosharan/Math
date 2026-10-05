@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200">
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a3f4f"/>
+      <stop offset="1" stop-color="#16181f"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a5f"/>
+      <stop offset="1" stop-color="#0b1a2e"/>
+    </linearGradient>
+    <linearGradient id="gemA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0fbff"/>
+      <stop offset="1" stop-color="#5ed6f0"/>
+    </linearGradient>
+    <linearGradient id="gemB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7fe3f7"/>
+      <stop offset="1" stop-color="#2a9fc4"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .shine{animation:sh 2.4s ease-in-out infinite}
+    @keyframes sh{50%{opacity:.25}}
+    @media (prefers-reduced-motion:reduce){.shine{animation:none}}
+  </style>
+  <rect x="4" y="4" width="152" height="192" rx="12" fill="url(#frame)"/>
+  <rect x="14" y="14" width="132" height="172" rx="5" fill="url(#panel)"/>
+  <!-- faceted gem play button -->
+  <path d="M40 66 56 46h48l16 20-14 46H54z" fill="url(#gemB)"/>
+  <path d="M40 66 56 46h48l16 20z" fill="url(#gemA)"/>
+  <path d="M56 46l10 20h28l10-20M40 66h80M66 66l14 46M94 66l-14 46" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/>
+  <path d="M73 70v22l18-11z" fill="#0b1a2e" opacity=".75"/>
+  <g class="shine" fill="#fff">
+    <path d="M30 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+    <path d="M128 112l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+  </g>
+  <rect x="40" y="140" width="80" height="24" rx="5" fill="#16181f"/>
+  <text x="80" y="157" text-anchor="middle" font-family="Rubik, 'Arial Black', Arial, sans-serif" font-weight="900" font-size="14" fill="#7fe3f7">1M</text>
+  <path d="M14 14h56L14 104z" fill="#fff" opacity=".12"/>
+</svg>

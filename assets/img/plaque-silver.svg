@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200">
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a3f4f"/>
+      <stop offset="1" stop-color="#16181f"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".45" stop-color="#d4dae2"/>
+      <stop offset=".55" stop-color="#b3bcc8"/>
+      <stop offset="1" stop-color="#eef2f6"/>
+    </linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a7b1bf"/>
+      <stop offset="1" stop-color="#6f7a8a"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="152" height="192" rx="12" fill="url(#frame)"/>
+  <rect x="14" y="14" width="132" height="172" rx="5" fill="url(#metal)"/>
+  <rect x="38" y="54" width="84" height="60" rx="18" fill="#59636f"/>
+  <rect x="38" y="50" width="84" height="60" rx="18" fill="url(#btn)"/>
+  <path d="M71 66v28l23-14z" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="40" y="140" width="80" height="24" rx="5" fill="#16181f"/>
+  <text x="80" y="157" text-anchor="middle" font-family="Rubik, 'Arial Black', Arial, sans-serif" font-weight="900" font-size="14" fill="#e9eef4">10K</text>
+  <path d="M14 14h56L14 104z" fill="#fff" opacity=".28"/>
+</svg>

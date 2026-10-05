@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <pattern id="stripes" width="40" height="180" patternUnits="userSpaceOnUse">
+      <rect width="20" height="180" fill="#2fa84f"/>
+      <rect x="20" width="20" height="180" fill="#37b858"/>
+    </pattern>
+    <pattern id="crowd" width="16" height="10" patternUnits="userSpaceOnUse">
+      <rect width="16" height="10" fill="#1d2140"/>
+      <circle cx="4" cy="5" r="2.6" fill="#ff5d6c"/>
+      <circle cx="12" cy="5" r="2.6" fill="#ffd23f"/>
+    </pattern>
+  </defs>
+  <style>
+    .ball{animation:roll 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+    @keyframes roll{50%{transform:translate(6px,-3px) rotate(160deg)}}
+    @media (prefers-reduced-motion:reduce){.ball{animation:none}}
+  </style>
+  <rect width="320" height="34" fill="url(#crowd)"/>
+  <rect y="30" width="320" height="6" fill="#11142a"/>
+  <rect y="36" width="320" height="144" fill="url(#stripes)"/>
+  <!-- pitch lines -->
+  <g fill="none" stroke="#fff" stroke-width="2.5" opacity=".9">
+    <rect x="10" y="44" width="300" height="128"/>
+    <path d="M160 44v128"/>
+    <circle cx="160" cy="108" r="24"/>
+    <rect x="10" y="78" width="40" height="60"/>
+    <rect x="270" y="78" width="40" height="60"/>
+  </g>
+  <circle cx="160" cy="108" r="3" fill="#fff"/>
+  <!-- goals -->
+  <rect x="4" y="92" width="6" height="32" fill="#fff" opacity=".8"/>
+  <rect x="310" y="92" width="6" height="32" fill="#fff" opacity=".8"/>
+  <!-- passing triangle -->
+  <path d="M84 146 236 140 168 64Z" fill="#ffd23f" fill-opacity=".18" stroke="#ffd23f" stroke-width="3" stroke-dasharray="7 5" stroke-linejoin="round"/>
+  <path d="M100 145a16 16 0 0 0-5-12" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <path d="M160 74a12 12 0 0 0 16 1" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <!-- players -->
+  <g stroke="#11142a" stroke-width="2">
+    <circle cx="84" cy="146" r="9" fill="#e0283b"/>
+    <circle cx="236" cy="140" r="9" fill="#e0283b"/>
+    <circle cx="168" cy="64" r="9" fill="#e0283b"/>
+  </g>
+  <g font-family="Rubik, 'Arial Black', Arial, sans-serif" font-weight="900" font-size="10" fill="#fff" text-anchor="middle">
+    <text x="84" y="150">7</text><text x="236" y="144">10</text><text x="168" y="68">9</text>
+  </g>
+  <!-- ball -->
+  <g class="ball">
+    <circle cx="186" cy="74" r="7" fill="#fff" stroke="#11142a" stroke-width="1.5"/>
+    <path d="M186 70.5l3.2 2.3-1.2 3.6h-4l-1.2-3.6z" fill="#11142a"/>
+  </g>
+</svg>

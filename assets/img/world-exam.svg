@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b2a4a"/>
+      <stop offset="1" stop-color="#284682"/>
+    </linearGradient>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M16 0H0v16" fill="none" stroke="#fff" stroke-opacity=".07"/>
+    </pattern>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9995a"/>
+      <stop offset="1" stop-color="#b8763c"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .tick{animation:tick 2s steps(8) infinite;transform-origin:238px 104px}
+    @keyframes tick{to{transform:rotate(360deg)}}
+    @media (prefers-reduced-motion:reduce){.tick{animation:none}}
+  </style>
+  <rect width="320" height="180" fill="url(#bg)"/>
+  <rect width="320" height="180" fill="url(#grid)"/>
+  <!-- clipboard -->
+  <g transform="rotate(-6 120 96)">
+    <rect x="62" y="24" width="116" height="146" rx="10" fill="url(#board)"/>
+    <rect x="72" y="38" width="96" height="124" rx="4" fill="#fdfdff"/>
+    <rect x="96" y="18" width="48" height="18" rx="5" fill="#aab3c2"/>
+    <rect x="104" y="14" width="32" height="10" rx="5" fill="#cfd6e0"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <rect x="80" y="52" width="14" height="14" rx="3" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+      <path d="m83 59 3 3 6-6" fill="none" stroke="#16a34a" stroke-width="2.6"/>
+      <path d="M102 59h56" stroke="#c9cfdb" stroke-width="5"/>
+      <rect x="80" y="78" width="14" height="14" rx="3" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+      <path d="m83 85 3 3 6-6" fill="none" stroke="#16a34a" stroke-width="2.6"/>
+      <path d="M102 85h44" stroke="#c9cfdb" stroke-width="5"/>
+      <rect x="80" y="104" width="14" height="14" rx="3" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+      <path d="m83 111 3 3 6-6" fill="none" stroke="#16a34a" stroke-width="2.6"/>
+      <path d="M102 111h52" stroke="#c9cfdb" stroke-width="5"/>
+      <rect x="80" y="130" width="14" height="14" rx="3" fill="#fff" stroke="#9aa3b5" stroke-width="2"/>
+      <path d="M102 137h38" stroke="#c9cfdb" stroke-width="5"/>
+    </g>
+  </g>
+  <!-- stopwatch -->
+  <rect x="232" y="56" width="12" height="10" rx="2" fill="#cfd6e0"/>
+  <rect x="226" y="50" width="24" height="8" rx="3" fill="#e0283b"/>
+  <circle cx="238" cy="104" r="40" fill="#e9edf5"/>
+  <circle cx="238" cy="104" r="33" fill="#fff" stroke="#1b2a4a" stroke-width="3"/>
+  <g stroke="#1b2a4a" stroke-width="3" stroke-linecap="round">
+    <path d="M238 75v6M238 127v6M209 104h6M261 104h6"/>
+  </g>
+  <path class="tick" d="M238 104V80" stroke="#e0283b" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="238" cy="104" r="4" fill="#1b2a4a"/>
+  <!-- score badge -->
+  <g transform="translate(270 40) rotate(10)">
+    <circle r="22" fill="#ffd23f" stroke="#1b2a4a" stroke-width="3"/>
+    <text y="6" text-anchor="middle" font-family="Rubik, 'Arial Black', Arial, sans-serif" font-weight="900" font-size="16" fill="#1b2a4a">100</text>
+  </g>
+</svg>

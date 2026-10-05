@@ -1,112 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>אימון למבחן מתמטיקה — כיתה ג'</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Noam TV · הכנה למיפוי מתמטיקה כיתה ד׳</title>
+  <meta name="description" content="משחק תרגול למיפוי תחילת שנה במתמטיקה לכיתה ד׳: מספרים עד רבבה, ישר המספרים, ארבע פעולות וגיאומטריה.">
+  <meta name="theme-color" content="#0e0f1a">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Noam TV">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon-64.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/rubik-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script type="module" src="assets/js/app.js"></script>
 </head>
 <body>
-  <header class="app-header">
-    <div class="title">
-      <span class="logo">🧮</span>
-      <div>
-        <h1>מתמטיקה כיפית לילדים</h1>
-      </div>
-    </div>
-    <div class="badges" id="badges"></div>
-  </header>
-
-  <main class="container">
-    <section class="card settings" id="settingsCard">
-      <h2>בחירת נושא והגדרות</h2>
-      <div class="grid">
-        <label class="field">
-          <span>בחר נושא</span>
-          <select id="topic">
-            <option value="multiplication">לוח הכפל (עד 10×10)</option>
-            <option value="tenThousands">תחום הרבבה (עד 9,999)</option>
-            <option value="addSub">חיבור וחיסור</option>
-            <option value="division">חילוק</option>
-            <option value="wordProblems">בעיות מילוליות</option>
-          </select>
-        </label>
-
-        <label class="field">
-          <span>רמת קושי (בינוני/מתקדם)</span>
-          <select id="difficulty">
-            <option value="medium">בינוני</option>
-            <option value="hard" selected>מתקדם</option>
-          </select>
-        </label>
-
-        <label class="field">
-          <span>מספר שאלות</span>
-          <select id="questionCount">
-            <option value="10" selected>10</option>
-            <option value="20">20</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="actions">
-        <button id="startBtn" class="btn primary">🚀 הפעל מבחן</button>
-        <button id="howBtn" class="btn ghost" title="איך זה עובד?">?</button>
-      </div>
-    </section>
-
-    <section class="card quiz hidden" id="quiz">
-      <div class="quiz-header">
-        <div class="progress">
-          <div class="progress-bar" id="progressBar" style="width:0%"></div>
-        </div>
-        <div class="score" id="scoreBox">ניקוד: 0</div>
-      </div>
-
-      <div class="question" id="questionText">כאן תופיע השאלה</div>
-
-      <div id="answerArea" class="answer-area">
-        <!-- Inputs will be injected dynamically depending on question type -->
-      </div>
-
-      <div class="keypad" id="keypad"></div>
-
-      <div class="actions">
-        <button id="checkBtn" class="btn success">בדיקה</button>
-        <button id="endBtn" class="btn danger">סיים</button>
-      </div>
-
-      <div class="feedback" id="feedback"></div>
-    </section>
-
-    <section class="card hidden" id="summary">
-      <h2>סיכום</h2>
-      <p id="summaryText"></p>
-      <div class="actions">
-        <button id="againBtn" class="btn primary">🔁 שוב</button>
-        <button id="backBtn" class="btn ghost">⬅️ חזרה להגדרות</button>
-      </div>
-    </section>
-
-    <dialog id="howDialog">
-      <h3>איך זה עובד?</h3>
-      <ol>
-        <li>בחרו נושא, רמת קושי ומספר שאלות.</li>
-        <li>לחצו <strong>התחל</strong>. תופיע שאלה בכל פעם.</li>
-        <li>מקלידים תשובה בשדה. אפשר להשתמש במקשי המספרים על המסך.</li>
-        <li>לחצו <strong>בדיקה</strong> לקבלת משוב מיידי ⭐.</li>
-        <li>בסוף תקבלו ציון, מדליות והמלצות לשיפור.</li>
-      </ol>
-      <form method="dialog">
-        <button class="btn">הבנתי</button>
-      </form>
-    </dialog>
+  <main id="app" tabindex="-1">
+    <noscript><p>כדי לשחק צריך להפעיל JavaScript בדפדפן.</p></noscript>
   </main>
-
-  <footer class="app-footer">
-    <small>נבנה לילדים בכיתה ג' — עובד גם בלי אינטרנט (קבצים מקומיים).</small>
-  </footer>
-
-  <script src="app.js"></script>
+  <div id="live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>
